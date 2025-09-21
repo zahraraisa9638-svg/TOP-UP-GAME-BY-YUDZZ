@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yudzz Store - Top Up Game Murah & Cepat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff930f;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff930f, #fff95b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: #fff;
+        }
+        
+        /* Banner Styles */
+        .banner {
+            background: linear-gradient(rgba(38, 50, 85, 0.85), rgba(38, 50, 85, 0.85)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .banner h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .btn-wa {
+            display: inline-block;
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .btn-wa:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        /* Diamond Packages */
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+        }
+        
+        .package {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .package:hover:before, .package.selected:before {
+            transform: scaleX(1);
+        }
+        
+        .package:hover, .package.selected {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .package img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .package:hover img {
+            transform: scale(1.1);
+        }
+        
+        .package h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .package .price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .package .bonus {
+            color: var(--success);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+            background: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        
+        .payment-method {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px;
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .payment-method:hover, .payment-method.selected {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .payment-method img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Transaction History */
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #e9ecef;
+            transition: background 0.3s ease;
+        }
+        
+        .transaction-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+        
+        .transaction-details h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .transaction-details p {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .transaction-amount {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status.success {
+            background: rgba(40, 167, 69, 0.15);
+            color: var(--success);
+        }
+        
+        .status.pending {
+            background: rgba(255, 193, 7, 0.15);
+            color: var(--warning);
+        }
+        
+        /* Information */
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .banner h2 {
+                font-size: 2.2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+            
+            .payment-methods {
+                justify-content: center;
+            }
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-gamepad fa-2x" style="color: #ff930f;"></i>
+                    <h1>Yudzz Store</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li><a href="#"><i class="fas fa-shopping-cart"></i> Top Up</a></li>
+                        <li><a href="#"><i class="fas fa-history"></i> Riwayat</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Bantuan</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+            <h2>Top Up Game Murah & Cepat</h2>
+            <p>Layanan top up game terpercaya dengan proses cepat dan harga terjangkau. Dapatkan diamond, coin, dan item game lainnya dengan mudah!</p>
+            <a href="https://wa.me/6285836243508?text=Halo,%20saya%20ingin%20top%20up%20game" class="btn-wa">
+                <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Diamond Packages -->
+                <div class="card">
+                    <h3 class="card-title">Pilih Jumlah Diamond Free Fire</h3>
+                    <div class="packages">
+                        <div class="package selected">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>5 Diamond</h4>
+                            <p class="price">Rp 1.000</p>
+                            <p class="bonus">+ Bonus 0</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>20 Diamond</h4>
+                            <p class="price">Rp 3.000</p>
+                            <p class="bonus">+ Bonus 0</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>50 Diamond</h4>
+                            <p class="price">Rp 6.000</p>
+                            <p class="bonus">+ Bonus 0</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>100 Diamond</h4>
+                            <p class="price">Rp 15.000</p>
+                            <p class="bonus">+ Bonus 5</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>310 Diamond</h4>
+                            <p class="price">Rp 45.000</p>
+                            <p class="bonus">+ Bonus 35</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>520 Diamond</h4>
+                            <p class="price">Rp 70.000</p>
+                            <p class="bonus">+ Bonus 60</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>1060 Diamond</h4>
+                            <p class="price">Rp 140.000</p>
+                            <p class="bonus">+ Bonus 130</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>2180 Diamond</h4>
+                            <p class="price">Rp 280.000</p>
+                            <p class="bonus">+ Bonus 275</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>5600 Diamond</h4>
+                            <p class="price">Rp 700.000</p>
+                            <p class="bonus">+ Bonus 750</p>
+                        </div>
+                        <div class="package">
+                            <img src="https://cdn-icons-png.flaticon.com/512/882/882747.png" alt="Diamond">
+                            <h4>Mingguan Diamond</h4>
+                            <p class="price">Rp 860.000</p>
+                            <p class="bonus">+ Bonus 1000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="card">
+                    <h3 class="card-title">Data Pembelian</h3>
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label for="player-id">ID Player Free Fire</label>
+                            <input type="text" class="form-control" id="player-id" placeholder="Masukkan ID Player" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickname">Nickname</label>
+                            <input type="text" class="form-control" id="nickname" placeholder="Masukkan Nickname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Masukkan Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">No. WhatsApp</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Masukkan No. WhatsApp" required>
+                        </div>
+                        
+                        <h3 class="card-title">Metode Pembayaran</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method selected">
+                                <img src="https://cdn-icons-png.flaticon.com/512/888/888871.png" alt="DANA">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="OVO">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://cdn-icons-png.flaticon.com/512/888/888862.png" alt="Gopay">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://cdn-icons-png.flaticon.com/512/888/888868.png" alt="LinkAja">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://cdn-icons-png.flaticon.com/512/888/888873.png" alt="ShopeePay">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://cdn-icons-png.flaticon.com/512/888/888883.png" alt="Bank Transfer">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block">Beli Sekarang</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Transaction History -->
+                <div class="card">
+                    <h3 class="card-title">Riwayat Transaksi Terbaru</h3>
+                    <div class="transaction-item">
+                        <div class="transaction-details">
+                            <h4>100 Diamond Free Fire</h4>
+                            <p>Andi • 12 Sep 2023</p>
+                        </div>
+                        <div class="transaction-amount">
+                            Rp 15.000
+                        </div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-details">
+                            <h4>310 Diamond Free Fire</h4>
+                            <p>Budi • 11 Sep 2023</p>
+                        </div>
+                        <div class="transaction-amount">
+                            Rp 45.000
+                        </div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-details">
+                            <h4>5600 Diamond Free Fire</h4>
+                            <p>Citra • 10 Sep 2023</p>
+                            <span class="status success">Berhasil</span>
+                        </div>
+                        <div class="transaction-amount">
+                            Rp 700.000
+                        </div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-details">
+                            <h4>1060 Diamond Free Fire</h4>
+                            <p>Doni • 9 Sep 2023</p>
+                            <span class="status success">Berhasil</span>
+                        </div>
+                        <div class="transaction-amount">
+                            Rp 140.000
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information -->
+                <div class="card">
+                    <h3 class="card-title">Informasi Layanan</h3>
+                    <div class="info">
+                        <p><i class="fas fa-bolt"></i> Proses cepat dan otomatis</p>
+                        <p><i class="fas fa-clock"></i> Layanan 24/7</p>
+                        <p><i class="fas fa-tag"></i> Harga terjangkau</p>
+                        <p><i class="fas fa-shield-alt"></i> Transaksi aman</p>
+                        <p><i class="fas fa-gamepad"></i> Untuk game lain, chat WhatsApp</p>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="card">
+                    <h3 class="card-title">Hubungi Kami</h3>
+                    <div class="info">
+                        <p><i class="fab fa-whatsapp"></i> 0858-3624-3508</p>
+                        <p><i class="fas fa-envelope"></i> yudzzstore@example.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indonesia</p>
+                    </div>
+                    <a href="https://wa.me/6285836243508?text=Halo,%20saya%20ingin%20top%20up%20game" class="btn btn-block" style="margin-top: 20px;">
+                        <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Yudzz Store</h3>
+                    <p>Layanan top up game terpercaya dengan proses cepat dan aman. Melayani berbagai game populer dengan harga terjangkau.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Terkait</h3>
+                    <a href="#">Syarat dan Ketentuan</a>
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Cara Top Up</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Game yang Tersedia</h3>
+                    <a href="#">Free Fire</a>
+                    <a href="#">Mobile Legends</a>
+                    <a href="#">PUBG Mobile</a>
+                    <a href="#">Valorant</a>
+                    <a href="#">Game Lainnya</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Yudzz Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Package Selection
+        const packages = document.querySelectorAll('.package');
+        packages.forEach(pkg => {
+            pkg.addEventListener('click', () => {
+                packages.forEach(p => p.classList.remove('selected'));
+                pkg.classList.add('selected');
+            });
+        });
+
+        // Payment Method Selection
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                paymentMethods.forEach(m => m.classList.remove('selected'));
+                method.classList.add('selected');
+            });
+        });
+
+        // Form Submission
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get selected package
+            const selectedPackage = document.querySelector('.package.selected h4').textContent;
+            const packagePrice = document.querySelector('.package.selected .price').textContent;
+            
+            // Get form values
+            const playerId = document.getElementById('player-id').value;
+            const nickname = document.getElementById('nickname').value;
+            
+            // Create WhatsApp message
+            const message = `Halo, saya ingin top up ${selectedPackage} - ${packagePrice}%0A%0A` +
+                            `ID Player: ${playerId}%0A` +
+                            `Nickname: ${nickname}%0A%0A` +
+                            `Silakan konfirmasi ketersediaan dan proses selanjutnya.`;
+            
+            // Redirect to WhatsApp
+            window.location.href = `https://wa.me/6285836243508?text=${message}`;
+        });
+    </script>
+</body>
+</html>
